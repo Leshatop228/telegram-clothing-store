@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: telegram-clothing-store
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/telegram_store}
+    username: ${SPRING_DATASOURCE_USERNAME:telegram_store_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:GrafMonteKristo}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+server:
+  port: ${PORT:8080}
+
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_BOT_USERNAME}

@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: telegram-store-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: telegram_store
+      POSTGRES_USER: telegram_store_user
+      POSTGRES_PASSWORD: GrafMonteKristo
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - telegram_store_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  telegram_store_postgres_data:
