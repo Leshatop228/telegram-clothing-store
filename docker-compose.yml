@@ -3,17 +3,37 @@ services:
     image: postgres:16-alpine
     container_name: telegram-store-postgres
     restart: unless-stopped
-
     environment:
       POSTGRES_DB: telegram_store
       POSTGRES_USER: telegram_store_user
-      POSTGRES_PASSWORD: GrafMonteKristo
-
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5433:5432"
-
     volumes:
       - telegram_store_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U telegram_store_user -d telegram_store"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-store-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/telegram_store
+      SPRING_DATASOURCE_USERNAME: telegram_store_user
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME}
+    ports:
+      - "8080:8080"
 
 volumes:
   telegram_store_postgres_data:
