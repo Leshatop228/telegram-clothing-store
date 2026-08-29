@@ -1,9 +1,9 @@
 package com.labubu.telegramclothingstore.catalog;
 
 import org.springframework.stereotype.Service;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
-
 
 @Service
 public class ProductService {
@@ -20,8 +20,13 @@ public class ProductService {
         return productRepository.findByCategoryId(categoryId);
     }
 
+    public List<ProductEntity> getAllProducts() {
+        return productRepository.findAll();
+    }
+
     public ProductEntity createProduct(Long categoryId, String title, String description,
-                                       String size, String material, String avitoUrl, String photoUrl) {
+                                       String size, String material, BigDecimal price,
+                                       String avitoUrl, String photoUrl) {
         CategoryEntity category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Категория с id " + categoryId + " не найдена"));
 
@@ -31,6 +36,7 @@ public class ProductService {
         product.setDescription(description);
         product.setSize(size);
         product.setMaterial(material);
+        product.setPrice(price);
         product.setAvitoUrl(avitoUrl);
         product.setPhotoUrl(photoUrl);
         product.setCreatedAt(OffsetDateTime.now());

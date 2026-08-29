@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/categories")
 public class CatalogController {
@@ -22,6 +21,11 @@ public class CatalogController {
     @GetMapping
     public List<CategoryEntity> getCategories() {
         return categoryService.getAllCategories();
+    }
+
+    @GetMapping("/products/all")
+    public List<ProductEntity> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     @PostMapping
@@ -42,6 +46,7 @@ public class CatalogController {
                 request.getDescription(),
                 request.getSize(),
                 request.getMaterial(),
+                request.getPrice(),
                 request.getAvitoUrl(),
                 request.getPhotoUrl()
         );

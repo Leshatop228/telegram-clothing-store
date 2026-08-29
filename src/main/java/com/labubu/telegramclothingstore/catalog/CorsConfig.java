@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOrigins(
                         "https://telegram-shop-woad.vercel.app",
-                        "http://localhost:3000"
+                        "https://gladly-cupbearer-clench.ngrok-free.dev"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")

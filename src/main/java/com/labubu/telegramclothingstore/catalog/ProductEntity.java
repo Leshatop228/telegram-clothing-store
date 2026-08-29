@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 @Getter
 @Setter
@@ -39,14 +40,22 @@ public class ProductEntity {
     @Column(name = "material")
     private String material;
 
-    @Column(name = "avito_url")
-    private String avitoUrl;
-
-    @Column(name = "photo_url")
+    @Column(name = "photo_url", columnDefinition = "TEXT")
     private String photoUrl;
+
+    @Column(name = "avito_url", columnDefinition = "TEXT")
+    private String avitoUrl;
 
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
+
+    @Column(name = "price")
+    private BigDecimal price;
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
 
     public Long getId() {
         return id;
