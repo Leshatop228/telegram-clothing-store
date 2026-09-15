@@ -1,7 +1,7 @@
 package com.labubu.telegramclothingstore.bot;
 
 import com.labubu.telegramclothingstore.catalog.CategoryEntity;
-import com.labubu.telegramclothingstore.catalog.CategoryService;
+import com.labubu.telegramclothingstore.service.CategoryService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;

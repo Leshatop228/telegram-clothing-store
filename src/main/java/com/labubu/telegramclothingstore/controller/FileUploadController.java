@@ -1,4 +1,4 @@
-package com.labubu.telegramclothingstore.catalog;
+package com.labubu.telegramclothingstore.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

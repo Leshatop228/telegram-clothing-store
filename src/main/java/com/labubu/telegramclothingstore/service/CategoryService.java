@@ -1,5 +1,7 @@
-package com.labubu.telegramclothingstore.catalog;
+package com.labubu.telegramclothingstore.service;
 
+import com.labubu.telegramclothingstore.catalog.CategoryEntity;
+import com.labubu.telegramclothingstore.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

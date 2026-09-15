@@ -1,5 +1,9 @@
-package com.labubu.telegramclothingstore.catalog;
+package com.labubu.telegramclothingstore.service;
 
+import com.labubu.telegramclothingstore.catalog.CategoryEntity;
+import com.labubu.telegramclothingstore.repository.CategoryRepository;
+import com.labubu.telegramclothingstore.catalog.ProductEntity;
+import com.labubu.telegramclothingstore.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
