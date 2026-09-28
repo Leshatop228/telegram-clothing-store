@@ -12,8 +12,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOrigins(
                         "http://localhost:5173",
-                        "https://telegram-shop-woad.vercel.app"
+                        "https://telegram-shop-woad.vercel.app",
+                        "https://abraham-exercises-generally-off.trycloudflare.com"
                 )
+
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
     }
